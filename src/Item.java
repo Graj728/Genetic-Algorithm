@@ -1,4 +1,5 @@
 public class Item {
+   /*Created fields for the class Item */
    private final String name;
    private final double weight;
    private final int value;
@@ -7,8 +8,8 @@ public class Item {
    /**
     * method to set the field of the class
     * 
-    * @param name   pases the name of items
-    * @param weight passe sthe weigh of item
+    * @param name   passes the name of items
+    * @param weight passes sthe weigh of item
     * @param value  passes the price of items
     */
    public Item(String name, double weight, int value) {
@@ -23,11 +24,11 @@ public class Item {
     * 
     * @param item passes the other item to the method
     */
-   public Item(Item item) {
-      this.name = item.name;
-      this.weight = item.weight;
-      this.value = item.value;
-      this.included = item.included;
+   public Item(Item other) {
+      this.name = other.name;
+      this.weight = other.weight;
+      this.value = other.value;
+      this.included = other.included;
    }
 
    /**

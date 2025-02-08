@@ -15,7 +15,7 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
     }
 
     /**
-     * method to add items to the arraylist items
+     * method to add acopy of each items to the arraylist items and uses random number to set the items included to tru or false
      * 
      * @param items passes the items arralist to the method
      */
@@ -28,20 +28,20 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
     }
 
     /**
-     * METHOD TO GET chromosomes from each parent and this method has been created
+     * METHOD TO GET chromosomes from each parent and create a child chromosome by crossover and this method has been created
      * with the help of chatGpt
      * 
-     * @param chromosome passes the chromosome of other parent
+     * @param other passes the chromosome of other parent
      * @return child arraylist with genes of both parent
      */
-    public Chromosome crossover(Chromosome chromosome) {
+    public Chromosome crossover(Chromosome other) {
         Chromosome child = new Chromosome();
         for (int i = 0; i < this.size(); i++) {
             int ind = rng.nextInt(10);
             if (ind < 5) {
                 child.add(new Item(this.get(i)));/* adds genes of parent 1 */
             } else {
-                child.add(new Item(chromosome.get(i)));/* adds genes of parent 2 */
+                child.add(new Item(other.get(i)));/* adds genes of parent 2 */
             }
 
         }
@@ -49,13 +49,13 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
     }
 
     /**
-     * method to mutate the child form each generation
+     * method to mutate the child form each generation and flips the included using random number
      * 
      * @return its a void method so it doesnot return anything
      */
     public void Mutate() {
         for (int i = 0; i < this.size(); i++) {
-            if (rng.nextInt(10) == 0) {
+            if (rng.nextInt(10) == 5) {
                 boolean included = this.get(i).isIncluded();
                 this.get(i).setIncluded(!included);
 
@@ -65,7 +65,7 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
     }
 
     /**
-     * method to get the fitness for each item from the file
+     * method to get the fitness for each chromosome from the file
      * 
      * @return the totalvalue of the items
      */
@@ -88,11 +88,11 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
     /**
      * method to compare chromosomes
      * 
-     * @param chromosome passes the other chromosome to the method
+     * @param other passes the other other to the method
      */
     @Override
-    public int compareTo(Chromosome chromosome) {
-        return Integer.compare(chromosome.getFitness(), this.getFitness());
+    public int compareTo(Chromosome other) {
+        return Integer.compare(other.getFitness(), this.getFitness());
     }
 
     /**
@@ -100,14 +100,14 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
      */
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
+        String result="";
         for (Item item : this) {
             if (item.isIncluded()) {
-                sb.append(item.toString()).append("\n");
+                result+=item.toString()+"\n";
             }
         }
-        sb.append("Fitness: ").append(getFitness());
-        return sb.toString();
+        
+        return result;
     }
 
 }
