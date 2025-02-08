@@ -1,5 +1,5 @@
 public class Item {
-   /*Created fields for the class Item */
+   /* Created fields for the class Item */
    private final String name;
    private final double weight;
    private final int value;

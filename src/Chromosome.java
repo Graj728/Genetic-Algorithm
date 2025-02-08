@@ -3,9 +3,9 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome> {
-    private  Random rng = new Random();
-    private  int totalWeight = 0;
-    private  int totalValue = 0;
+    private Random rng = new Random();
+    private int totalWeight = 0;
+    private int totalValue = 0;
 
     /**
      * constructor method for Chromosome and set empty
@@ -15,7 +15,8 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
     }
 
     /**
-     * method to add acopy of each items to the arraylist items and uses random number to set the items included to tru or false
+     * method to add acopy of each items to the arraylist items and uses random
+     * number to set the items included to tru or false
      * 
      * @param items passes the items arralist to the method
      */
@@ -28,7 +29,8 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
     }
 
     /**
-     * METHOD TO GET chromosomes from each parent and create a child chromosome by crossover and this method has been created
+     * METHOD TO GET chromosomes from each parent and create a child chromosome by
+     * crossover and this method has been created
      * with the help of chatGpt
      * 
      * @param other passes the chromosome of other parent
@@ -49,7 +51,8 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
     }
 
     /**
-     * method to mutate the child form each generation and flips the included using random number
+     * method to mutate the child form each generation and flips the included using
+     * random number
      * 
      * @return its a void method so it doesnot return anything
      */
@@ -100,14 +103,16 @@ public class Chromosome extends ArrayList<Item> implements Comparable<Chromosome
      */
     @Override
     public String toString() {
-        String result="";
+        String result = "";
         for (Item item : this) {
             if (item.isIncluded()) {
-                result+=item.toString()+"\n";
+                result += item.toString() + "\n";
             }
+
         }
-        
-        return result;
+        System.out.print(result);
+
+        return "Fitness: " + getFitness();
     }
 
 }
